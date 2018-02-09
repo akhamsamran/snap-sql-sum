@@ -48,9 +48,25 @@ CREATE TABLE ledger(
 	PRIMARY KEY (ledgerBoardId, ledgerCardId, ledgerProfileId)
 );
 
--- write a FUNCTION (not a procedure) in mySQL that takes two inputs as FLOAT and returns the sum of the two inputs as FLOAT
 
-DROP FUNCTION IF EXISTS addTwoNumbers(first FLOAT, second FLOAT) RETURNS FLOAT
-SELECT SUM(ledger.ledgerPoints, card.cardPoints)
-FROM ledger, card
-[WHERE conditions];
+-- SELECT SUM(ledger.ledgerPoints, card.cardPoints)
+-- FROM ledger, card
+-- [WHERE conditions];
+
+
+-- write a FUNCTION (not a procedure) in mySQL that takes two inputs as FLOAT and returns the sum of the two inputs as FLOAT
+DROP FUNCTION IF EXISTS addTwoNumbers;
+-- adds the two numbers
+-- @param FLOAT firstNumber first number to add
+-- @param FLOAT secondNumber second number to add
+-- @return FLOAT resulting sum
+CREATE FUNCTION addTwoNumbers(firstNumber FLOAT, secondNumber FLOAT) RETURNS FLOAT
+BEGIN
+-- declare variables
+	SET sum = firstNumber + secondNumber;
+
+-- return the summed value
+	RETURN sum;
+END;
+
+
